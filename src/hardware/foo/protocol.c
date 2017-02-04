@@ -41,7 +41,7 @@ static const uint8_t pattern_sigrok[] = {
 	0xbe, 0xbe, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-SR_PRIV void demo_generate_analog_pattern(struct analog_gen *ag, uint64_t sample_rate)
+SR_PRIV void foo_generate_analog_pattern(struct analog_gen *ag, uint64_t sample_rate)
 {
 	double t, frequency;
 	float value;
@@ -214,7 +214,7 @@ do_send:
 }
 
 /* Callback handling data */
-SR_PRIV int demo_prepare_data(int fd, int revents, void *cb_data)
+SR_PRIV int foo_prepare_data(int fd, int revents, void *cb_data)
 {
 	struct sr_dev_inst *sdi;
 	struct dev_context *devc;

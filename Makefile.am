@@ -278,6 +278,10 @@ src_libdrivers_la_SOURCES += \
 	src/hardware/fluke-dmm/protocol.c \
 	src/hardware/fluke-dmm/api.c
 endif
+src_libdrivers_la_SOURCES += \
+	src/hardware/foo/protocol.h \
+	src/hardware/foo/protocol.c \
+	src/hardware/foo/api.c
 if HW_FTDI_LA
 src_libdrivers_la_SOURCES += \
 	src/hardware/ftdi-la/protocol.h \

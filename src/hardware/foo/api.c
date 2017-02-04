@@ -42,7 +42,7 @@ static const char *logic_pattern_str[] = {
 };
 
 static const uint32_t drvopts[] = {
-	SR_CONF_DEMO_DEV,
+	SR_CONF_FOO_DEV,
 	SR_CONF_LOGIC_ANALYZER,
 	SR_CONF_OSCILLOSCOPE,
 };
@@ -108,7 +108,7 @@ static GSList *scan(struct sr_dev_driver *di, GSList *options)
 
 	sdi = g_malloc0(sizeof(struct sr_dev_inst));
 	sdi->status = SR_ST_INACTIVE;
-	sdi->model = g_strdup("Demo device");
+	sdi->model = g_strdup("Foo device");
 
 	devc = g_malloc0(sizeof(struct dev_context));
 	devc->cur_samplerate = SR_KHZ(200);
@@ -462,10 +462,10 @@ static int dev_acquisition_start(const struct sr_dev_inst *sdi)
 
 	g_hash_table_iter_init(&iter, devc->ch_ag);
 	while (g_hash_table_iter_next(&iter, NULL, &value))
-		demo_generate_analog_pattern(value, devc->cur_samplerate);
+		foo_generate_analog_pattern(value, devc->cur_samplerate);
 
 	sr_session_source_add(sdi->session, -1, 0, 100,
-			demo_prepare_data, (struct sr_dev_inst *)sdi);
+			foo_prepare_data, (struct sr_dev_inst *)sdi);
 
 	std_session_send_df_header(sdi);
 
@@ -485,9 +485,9 @@ static int dev_acquisition_stop(struct sr_dev_inst *sdi)
 	return SR_OK;
 }
 
-static struct sr_dev_driver demo_driver_info = {
-	.name = "demo",
-	.longname = "Demo driver and pattern generator",
+static struct sr_dev_driver foo_driver_info = {
+	.name = "foo",
+	.longname = "Foo driver",
 	.api_version = 1,
 	.init = std_init,
 	.cleanup = std_cleanup,
@@ -503,4 +503,4 @@ static struct sr_dev_driver demo_driver_info = {
 	.dev_acquisition_stop = dev_acquisition_stop,
 	.context = NULL,
 };
-SR_REGISTER_DEV_DRIVER(demo_driver_info);
+SR_REGISTER_DEV_DRIVER(foo_driver_info);
