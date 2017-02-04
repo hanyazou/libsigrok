@@ -18,6 +18,14 @@
  */
 
 #include <config.h>
+
+/* FIXME: hanyazou 2017/2/4 */
+#include <stdint.h>
+#define u_int8_t uint8_t
+#define u_int16_t uint16_t
+#define u_int32_t uint32_t
+/* */
+
 #include <ftdi.h>
 #include <libusb.h>
 #include <libsigrok/libsigrok.h>
